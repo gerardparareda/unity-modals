@@ -7,12 +7,14 @@ using UnityEngine.InputSystem;
 public class Input : MonoBehaviour
 {
 
-    public InputActions controlsInputActions;
+    
     private AddressablesManager modalAddressablesManager;
     [SerializeField] private AssetReferenceGameObject modelOptions;
 
     private void Awake()
     {
+        PlayerInputActions controlsInputActions = new PlayerInputActions();
+        controlsInputActions.Enable();
         controlsInputActions.Player.Settings.performed += OpenSettings;
     }
 

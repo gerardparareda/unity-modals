@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Utilities;
 
 public class AddressablesManager : MonoBehaviour
 {
@@ -25,7 +27,7 @@ public class AddressablesManager : MonoBehaviour
             else
             {
                 instantiatedModal.transform.SetParent(instantiatedModals[instantiatedModals.Count - 1].transform, false);
-                instantiatedModal.GetComponent<ModalBehaviour>().GetPrimaryHighlightedButton().Select();
+                instantiatedModal.GetComponent<ModalBehaviour>().SelectPrimaryHighlightedButton();
             }
             instantiatedModals.Add(instantiatedModal);
             instantiatedModalsAssetsReferences.Add(modalAssetReference);
@@ -42,7 +44,7 @@ public class AddressablesManager : MonoBehaviour
             instantiatedModalsAssetsReferences.RemoveAt(modalIndex);
             if(instantiatedModals.Count > 0)
             {
-                instantiatedModals[instantiatedModals.Count-1].GetComponent<ModalBehaviour>().GetPrimaryHighlightedButton().Select();
+                instantiatedModals[instantiatedModals.Count-1].GetComponent<ModalBehaviour>().SelectPrimaryHighlightedButton();
             }
         } else
         {
@@ -50,14 +52,17 @@ public class AddressablesManager : MonoBehaviour
         }
     }
 
-    public bool IsLastModal(GameObject checkModal)
+    void FixedUpdate()
     {
-        if (instantiatedModals.Count > 0)
-        {
-            return instantiatedModals[instantiatedModals.Count - 1] == checkModal;
-        } else {
-            return false;
-        }
+        // Control what to do if the mouse gains focus and then the user decides to use Keyboard or 
+        InputSystem.onAnyButtonPress.Call(
+            ctrl =>
+            {
+                if ((ctrl.device is Gamepad || ctrl.device is Keyboard) && EventSystem.current.currentSelectedGameObject == null)
+                {
+                    if (instantiatedModals.Count > 0)
+                        instantiatedModals[instantiatedModals.Count-1].GetComponent<ModalBehaviour>().SelectPrimaryHighlightedButton();
+                }
+            });
     }
-
 }
