@@ -147,6 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6af1fe3012835d0409b0f30164b94a02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentModal: {fileID: 4780769949538603635}
   textQuestion: {fileID: 4780769949845142480}
   textDescription: {fileID: 4780769950534386773}
   colorToChangeTexts: {r: 0, g: 1, b: 0.9186573, a: 1}
@@ -456,6 +457,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6af1fe3012835d0409b0f30164b94a02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentModal: {fileID: 4780769949538603635}
   textQuestion: {fileID: 4780769949845142480}
   textDescription: {fileID: 4780769950534386773}
   colorToChangeTexts: {r: 0, g: 1, b: 0.08727884, a: 1}
@@ -1175,6 +1177,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6af1fe3012835d0409b0f30164b94a02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentModal: {fileID: 4780769949538603635}
   textQuestion: {fileID: 4780769949845142480}
   textDescription: {fileID: 4780769950534386773}
   colorToChangeTexts: {r: 1, g: 0, b: 0, a: 1}
@@ -1405,6 +1408,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6af1fe3012835d0409b0f30164b94a02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentModal: {fileID: 4780769949538603635}
   textQuestion: {fileID: 4780769949845142480}
   textDescription: {fileID: 4780769950534386773}
   colorToChangeTexts: {r: 0.09377575, g: 0, b: 1, a: 1}
@@ -1555,6 +1559,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6af1fe3012835d0409b0f30164b94a02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentModal: {fileID: 4780769949538603635}
   textQuestion: {fileID: 4780769949845142480}
   textDescription: {fileID: 4780769950534386773}
   colorToChangeTexts: {r: 1, g: 0, b: 0.61292124, a: 1}

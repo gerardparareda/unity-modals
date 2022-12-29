@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class ButtonModal3Behaviour : MonoBehaviour
 {
+    [SerializeField] private GameObject parentModal;
     [SerializeField] private Text textQuestion;
     [SerializeField] private Text textDescription;
     [SerializeField] private Color colorToChangeTexts;
@@ -13,6 +14,13 @@ public class ButtonModal3Behaviour : MonoBehaviour
     {
         textQuestion.color = colorToChangeTexts;
         textDescription.color = colorToChangeTexts;
-        //parentModal.GetComponent<ButtonModalBehaviour>().CloseModal();
+
+        parentModal.GetComponent<ModalBehaviour>().CloseModal(Waiter());
+    }
+
+    IEnumerator Waiter()
+    {
+        yield return new WaitForSeconds(2);
+        parentModal.GetComponent<ModalBehaviour>().CloseModal();
     }
 }

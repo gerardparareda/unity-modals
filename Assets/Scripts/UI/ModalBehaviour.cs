@@ -5,7 +5,7 @@ using UnityEngine.AddressableAssets;
 
 public class ModalBehaviour : MonoBehaviour
 {
-
+    private IEnumerator waitCoroutine;
 
     private AddressablesManager modalAddressablesManager;
 
@@ -30,4 +30,21 @@ public class ModalBehaviour : MonoBehaviour
         }
     }
 
+    /*public void Update()
+    {
+        if (this.waitCoroutine != null)
+        {
+            Debug.Log(waitCoroutine.Current.ToString());
+        }
+    }*/
+
+    public void CloseModal(IEnumerator waitCoroutine)
+    {
+        if (this.waitCoroutine != null)
+        {
+            StopCoroutine(this.waitCoroutine);
+        }
+        this.waitCoroutine = waitCoroutine;
+        StartCoroutine(this.waitCoroutine);
+    }
 }
