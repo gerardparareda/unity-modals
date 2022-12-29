@@ -27,10 +27,10 @@ public class AddressablesManager : MonoBehaviour
             else
             {
                 instantiatedModal.transform.SetParent(instantiatedModals[instantiatedModals.Count - 1].transform, false);
-                instantiatedModal.GetComponent<ModalBehaviour>().SelectPrimaryHighlightedButton();
             }
             instantiatedModals.Add(instantiatedModal);
             instantiatedModalsAssetsReferences.Add(modalAssetReference);
+            instantiatedModal.GetComponent<ModalBehaviour>().SelectPrimaryHighlightedButton();
         };
     }
 
@@ -58,11 +58,28 @@ public class AddressablesManager : MonoBehaviour
         InputSystem.onAnyButtonPress.Call(
             ctrl =>
             {
-                if ((ctrl.device is Gamepad || ctrl.device is Keyboard) && EventSystem.current.currentSelectedGameObject == null)
+                if ((ctrl.device is Gamepad || ctrl.device is Keyboard) && instantiatedModals.Count > 0)
                 {
-                    if (instantiatedModals.Count > 0)
-                        instantiatedModals[instantiatedModals.Count-1].GetComponent<ModalBehaviour>().SelectPrimaryHighlightedButton();
+                    if (EventSystem.current.currentSelectedGameObject == null)
+                    {
+                        RefocusUI();
+                    }
+                    else
+                    {
+                        if (
+                            EventSystem.current.currentSelectedGameObject.GetComponent<ButtonBase>().GetModalParentBehaviour().gameObject
+                            != instantiatedModals[instantiatedModals.Count - 1]
+                        )
+                            RefocusUI();
+                    }
+                    // Error is here. Somehow goes to back modal because is not controlled
                 }
             });
+    }
+
+    public void RefocusUI()
+    {
+        if (instantiatedModals.Count > 0)
+            instantiatedModals[instantiatedModals.Count - 1].GetComponent<ModalBehaviour>().SelectPrimaryHighlightedButton();
     }
 }

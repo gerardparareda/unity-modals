@@ -1,9 +1,6 @@
 using System.Collections;
-using System.Linq;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Utilities;
 using UnityEngine.UI;
 
 public class ModalBehaviour : MonoBehaviour
@@ -12,12 +9,13 @@ public class ModalBehaviour : MonoBehaviour
 
     private AddressablesManager modalAddressablesManager;
 
-    [SerializeField] private Button primaryHighlightedButton;
-
-
+    private Button primaryHighlightedButton;
+    [SerializeField] private GameObject panelButtons;
+    public List<ButtonBase> buttonsAnswers = new List<ButtonBase>();
 
     public void Start()
     {
+        ButtonBase lastInstantiatedAnswerButton = null;
         GameObject[] addressablesManagers = GameObject.FindGameObjectsWithTag("AddressableManager");
         if (addressablesManagers.Length > 0)
         {
@@ -27,6 +25,14 @@ public class ModalBehaviour : MonoBehaviour
         {
             Debug.Log("No addressable managers instantianted");
         }
+        foreach (ButtonBase button in buttonsAnswers)
+        {
+            ButtonBase instantiatedAnswerButton = Instantiate(button);
+            instantiatedAnswerButton.SetModalParent(this.gameObject);
+            instantiatedAnswerButton.transform.SetParent(panelButtons.transform, false);
+            lastInstantiatedAnswerButton = instantiatedAnswerButton;
+        }
+        primaryHighlightedButton = lastInstantiatedAnswerButton.GetComponent<Button>();
     }
 
     public void CloseModal()
@@ -49,6 +55,7 @@ public class ModalBehaviour : MonoBehaviour
 
     public void SelectPrimaryHighlightedButton()
     {
-        primaryHighlightedButton.Select();
+        if(primaryHighlightedButton)
+            primaryHighlightedButton.Select();
     }
 }

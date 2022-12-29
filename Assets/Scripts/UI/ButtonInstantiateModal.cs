@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEditor.AddressableAssets;
 using UnityEngine.AddressableAssets;
 
-public class ButtonInstantiateModal : MonoBehaviour
+public class ButtonInstantiateModal : ButtonBase
 {
     [SerializeField]
     private AssetReferenceGameObject modalAssetReference;

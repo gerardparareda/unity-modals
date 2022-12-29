@@ -32,6 +32,8 @@ https://answers.unity.com/questions/300864/how-to-stop-a-co-routine-in-c-instant
 https://www.youtube.com/watch?v=zc8ac_qUXQY
 
 ## Others
+List of custom serializable class: https://forum.unity.com/threads/public-list-not-appearing-in-inspector.520160/
+
 Find in List: https://stackoverflow.com/questions/38197707/how-to-find-list-element-with-class-without-looping-unity-c-sharp
 
 Unity Code Guideline: https://myunity.dev/coding-guideline-for-unity-c/
