@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnityEngine.EventSystems;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.UI;
 
@@ -28,6 +29,7 @@ public class AddressablesManager : MonoBehaviour
             else
             {
                 instantiatedModal.transform.SetParent(instantiatedModals[instantiatedModals.Count - 1].transform, false);
+                EventSystem.current.SetSelectedGameObject(instantiatedModal);
             }
             instantiatedModals.Add(instantiatedModal);
             instantiatedModalsAssetsReferences.Add(modalAssetReference);
