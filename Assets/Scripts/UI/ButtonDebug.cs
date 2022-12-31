@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ButtonModal2Behaviour : MonoBehaviour
+public class ButtonDebug : ButtonBase
 {
 
     public void SendDebug()

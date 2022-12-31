@@ -20,17 +20,10 @@ public class AddressablesManager : MonoBehaviour
         modalAssetReference.InstantiateAsync().Completed += (asyncOperation) =>
         {
             instantiatedModal = asyncOperation.Result;
-            if (instantiatedModals.Count == 0)
-            {
-                instantiatedModal.transform.SetParent(initialParentModal.transform, false);
-            }
-            else
-            {
-                instantiatedModal.transform.SetParent(instantiatedModals[instantiatedModals.Count - 1].transform, false);
-            }
+            instantiatedModal.transform.SetParent(initialParentModal.transform, false);
+            DisableBehindModalInteractables();
             instantiatedModals.Add(instantiatedModal);
             instantiatedModalsAssetsReferences.Add(modalAssetReference);
-            instantiatedModal.GetComponent<ModalBehaviour>().SelectPrimaryHighlightedButton();
         };
     }
 
@@ -44,6 +37,7 @@ public class AddressablesManager : MonoBehaviour
             instantiatedModalsAssetsReferences.RemoveAt(modalIndex);
             if(instantiatedModals.Count > 0)
             {
+                instantiatedModals[instantiatedModals.Count-1].GetComponent<ModalBehaviour>().EnableAnswerButtons();
                 instantiatedModals[instantiatedModals.Count-1].GetComponent<ModalBehaviour>().SelectPrimaryHighlightedButton();
             }
         } else
@@ -64,14 +58,14 @@ public class AddressablesManager : MonoBehaviour
                     {
                         RefocusUI();
                     }
-                    else
+                    /*else
                     {
                         if (
                             EventSystem.current.currentSelectedGameObject.GetComponent<ButtonBase>().GetModalParentBehaviour().gameObject
                             != instantiatedModals[instantiatedModals.Count - 1]
                         )
                             RefocusUI();
-                    }
+                    }*/
                     // Error is here. Somehow goes to back modal because is not controlled
                 }
             });
@@ -81,5 +75,11 @@ public class AddressablesManager : MonoBehaviour
     {
         if (instantiatedModals.Count > 0)
             instantiatedModals[instantiatedModals.Count - 1].GetComponent<ModalBehaviour>().SelectPrimaryHighlightedButton();
+    }
+
+    public void DisableBehindModalInteractables()
+    {
+        if (instantiatedModals.Count > 0)
+            instantiatedModals[instantiatedModals.Count - 1].GetComponent<ModalBehaviour>().DisableAnswerButtons();
     }
 }

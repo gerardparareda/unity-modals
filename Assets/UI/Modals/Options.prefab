@@ -90,6 +90,7 @@ GameObject:
   - component: {fileID: 4780769949538603628}
   - component: {fileID: 4780769949538603629}
   - component: {fileID: 285805793737853300}
+  - component: {fileID: 1743512248183994205}
   m_Layer: 5
   m_Name: Options
   m_TagString: Untagged
@@ -170,10 +171,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panelButtons: {fileID: 4780769950039854597}
   buttonsAnswers:
-  - {fileID: 3795939501200998956, guid: d5fefa9d844d59045bdc62f6f3c3e72e, type: 3}
-  - {fileID: 3795939501200998956, guid: e33825ee881dcf14fa26e4da62977bb4, type: 3}
-  - {fileID: 3795939501200998956, guid: 631130d22ae84d242bcc460eac231411, type: 3}
-  - {fileID: 8500231282838682029, guid: 83abeeecee81fee48a68b32f4cf6583c, type: 3}
+  - {fileID: 8141142650214350232, guid: d5fefa9d844d59045bdc62f6f3c3e72e, type: 3}
+  - {fileID: 8141142650214350232, guid: e33825ee881dcf14fa26e4da62977bb4, type: 3}
+  - {fileID: 8141142650214350232, guid: 631130d22ae84d242bcc460eac231411, type: 3}
+  - {fileID: 7835152838661497249, guid: 83abeeecee81fee48a68b32f4cf6583c, type: 3}
+--- !u!225 &1743512248183994205
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4780769949538603635}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &4780769949845142486
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,11 +12,11 @@ public class ModalBehaviour : MonoBehaviour
 
     private Button primaryHighlightedButton;
     [SerializeField] private GameObject panelButtons;
-    public List<ButtonBase> buttonsAnswers = new List<ButtonBase>();
+    public List<GameObject> buttonsAnswers = new List<GameObject>();
+    private List<GameObject> instantiatedButtonsAnswer = new List<GameObject>();
 
     public void Start()
     {
-        ButtonBase lastInstantiatedAnswerButton = null;
         GameObject[] addressablesManagers = GameObject.FindGameObjectsWithTag("AddressableManager");
         if (addressablesManagers.Length > 0)
         {
@@ -25,14 +26,15 @@ public class ModalBehaviour : MonoBehaviour
         {
             Debug.Log("No addressable managers instantianted");
         }
-        foreach (ButtonBase button in buttonsAnswers)
+        foreach (GameObject button in buttonsAnswers)
         {
-            ButtonBase instantiatedAnswerButton = Instantiate(button);
-            instantiatedAnswerButton.SetModalParent(this.gameObject);
-            instantiatedAnswerButton.transform.SetParent(panelButtons.transform, false);
-            lastInstantiatedAnswerButton = instantiatedAnswerButton;
+            GameObject answerButton = Instantiate(button);
+            answerButton.GetComponent<ButtonBase>().SetModalParent(this.gameObject);
+            answerButton.transform.SetParent(panelButtons.transform, false);
+            instantiatedButtonsAnswer.Add(answerButton);
         }
-        primaryHighlightedButton = lastInstantiatedAnswerButton.GetComponent<Button>();
+        primaryHighlightedButton = instantiatedButtonsAnswer[instantiatedButtonsAnswer.Count-1].GetComponent<Button>();
+        SelectPrimaryHighlightedButton();
     }
 
     public void CloseModal()
@@ -55,7 +57,23 @@ public class ModalBehaviour : MonoBehaviour
 
     public void SelectPrimaryHighlightedButton()
     {
-        if(primaryHighlightedButton)
-            primaryHighlightedButton.Select();
+        GameObject primaryHighlightedButton = instantiatedButtonsAnswer[instantiatedButtonsAnswer.Count - 1];
+        if (primaryHighlightedButton)
+        {
+            primaryHighlightedButton.GetComponent<Button>().Select();
+        } else
+        { 
+            Debug.Log("No primary highlightable button found");
+        }
+    }
+
+    public void DisableAnswerButtons()
+    {
+        GetComponent<CanvasGroup>().interactable = false;
+    }
+
+    public void EnableAnswerButtons()
+    {
+        GetComponent<CanvasGroup>().interactable = true;
     }
 }

@@ -91,6 +91,7 @@ GameObject:
   - component: {fileID: 4780769949538603628}
   - component: {fileID: 4780769949538603629}
   - component: {fileID: 285805793737853300}
+  - component: {fileID: 33277100654791156}
   m_Layer: 5
   m_Name: Modal1
   m_TagString: Untagged
@@ -171,7 +172,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panelButtons: {fileID: 4780769950039854597}
   buttonsAnswers:
-  - {fileID: 8500231282838682029, guid: 83abeeecee81fee48a68b32f4cf6583c, type: 3}
+  - {fileID: 7835152838661497249, guid: 83abeeecee81fee48a68b32f4cf6583c, type: 3}
+--- !u!225 &33277100654791156
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4780769949538603635}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &4780769949845142486
 GameObject:
   m_ObjectHideFlags: 0
