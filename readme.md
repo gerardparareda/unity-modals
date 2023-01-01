@@ -13,6 +13,7 @@ Gamepad tested with Nintendo Joycons.
 - Make GameManager a singleton
 - Keep selected button on new modal open and close
 - Make more modals like a controls one or a question to validate game close
+- Improve pause to not disable player (only done to avoid player input while paused)
 - Customize UI
 - Clean up some code
 - Document all the code
