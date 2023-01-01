@@ -7,7 +7,7 @@ using UnityEngine.InputSystem.Utilities;
 
 public class AddressablesManager : MonoBehaviour
 {
-
+    [SerializeField] private GameManager gameManager;
     [SerializeField] private GameObject initialParentModal;
 
     private GameObject instantiatedModal;
@@ -26,6 +26,10 @@ public class AddressablesManager : MonoBehaviour
             DisableBehindModalInteractables();
             instantiatedModals.Add(instantiatedModal);
             instantiatedModalsAssetsReferences.Add(modalAssetReference);
+            if (instantiatedModals.Count == 1)
+            {
+                gameManager.PauseGame();
+            }
         };
     }
 
@@ -43,10 +47,15 @@ public class AddressablesManager : MonoBehaviour
                 if (EventSystem.current.currentSelectedGameObject == null)
                     instantiatedModals[instantiatedModals.Count-1].GetComponent<ModalBehaviour>().SelectPrimaryHighlightedButton();
             }
+            if (instantiatedModals.Count == 0)
+            {
+                gameManager.ResumeGame();
+            }
         } else
         {
             Debug.Log("Can't close modal. Not found in AdressablesManager.");
         }
+        
     }
 
     void FixedUpdate()
@@ -88,5 +97,10 @@ public class AddressablesManager : MonoBehaviour
     {
         if (instantiatedModals.Count > 0)
             instantiatedModals[instantiatedModals.Count - 1].GetComponent<ModalBehaviour>().DisableAnswerButtons();
+    }
+
+    public bool IsOptionsModalCreated()
+    {
+        return instantiatedModals.Count > 0;
     }
 }

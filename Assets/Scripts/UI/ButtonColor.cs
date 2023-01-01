@@ -29,7 +29,7 @@ public class ButtonColor : ButtonBase
 
     IEnumerator Waiter()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSecondsRealtime(2);
         parentModalBehaviourReference.CloseModal();
     }
 }
