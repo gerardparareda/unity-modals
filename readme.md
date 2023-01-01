@@ -1,5 +1,12 @@
 # Modals test for Petoons 
 
+## Usage
+### Binary
+Grab latest from releases and download. Unzip, connect controller and open the .exe
+
+### Editor/Source code
+Clone this repository or download source code. Made with Unity 2021.3.16f1.
+
 ## Controls
 WASD/Arrows/Joystick (Gamepad) -> Move player
 
@@ -70,5 +77,7 @@ Drivers to use Joy-Cons as XINPUT in Windows: https://github.com/Davidobot/Bette
 
 
 ## Credits
+Blur shader from https://github.com/LexdevTutorials not made by me because I didn't have the time.
+
 Made by Gerard Parareda Gallifa
 (27 December 2022 - 1 January 2023, during my vacations in Istanbul)
