@@ -10,6 +10,8 @@ public class AddressablesManager : MonoBehaviour
     [SerializeField] private GameManager gameManager;
     [SerializeField] private GameObject initialParentModal;
 
+    public GameObject buttonOptionsOpen;
+
     private GameObject instantiatedModal;
 
     private List<GameObject> instantiatedModals = new List<GameObject>();
@@ -50,6 +52,9 @@ public class AddressablesManager : MonoBehaviour
             }
             if (instantiatedModals.Count == 0)
             {
+                if (instantiatedModals.Count == 0)
+                    buttonOptionsOpen.SetActive(true);
+
                 gameManager.ResumeGame();
             }
         } else
@@ -96,6 +101,9 @@ public class AddressablesManager : MonoBehaviour
 
     public void DisableBehindModalInteractables()
     {
+        if (instantiatedModals.Count == 0)
+            buttonOptionsOpen.SetActive(false);
+
         if (instantiatedModals.Count > 0)
             instantiatedModals[instantiatedModals.Count - 1].GetComponent<ModalBehaviour>().DisableAnswerButtons();
     }
