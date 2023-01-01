@@ -5,17 +5,21 @@ WASD/Arrows/Joystick (Gamepad) -> Move player
 ESC/P/Start (Gamepad) -> Open pause/options menu
 Enter/South button (Gamepad) -> Select answer from modal
 
+Gamepad tested with Nintendo Joycons.
 
 ## Possible improvements
 - Better resizability across different screen sizes
 - Use new UI Toolkit system
 - Make GameManager a singleton
 - Keep selected button on new modal open and close
+- Make more modals like a controls one or a question to validate game close
 - Customize UI
 - Clean up some code
 - Document all the code
 
 ## Resources
+Some of the things I had to look up.
+
 ### Blur shader
 https://lexdev.net/tutorials/ui/blur.html
 
