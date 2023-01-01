@@ -2,7 +2,7 @@
 
 ## Controls
 WASD/Arrows/Joystick (Gamepad) -> Move player
-ESC/P/Start (Gamepad) -> Open pause/options menu
+ESC/P/Start or Select (Gamepad) -> Open pause/options menu
 Enter/South button (Gamepad) -> Select answer from modal
 
 Gamepad tested with Nintendo Joycons.
