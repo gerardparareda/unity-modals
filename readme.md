@@ -9,8 +9,9 @@ Enter/South button (Gamepad) -> Select answer from modal
 ## Possible improvements
 - Better resizability across different screen sizes
 - Use new UI Toolkit system
-- Customize UI
 - Make GameManager a singleton
+- Keep selected button on new modal open and close
+- Customize UI
 - Clean up some code
 - Document all the code
 

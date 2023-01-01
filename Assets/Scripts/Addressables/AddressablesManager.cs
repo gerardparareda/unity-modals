@@ -44,8 +44,8 @@ public class AddressablesManager : MonoBehaviour
             if(instantiatedModals.Count > 0)
             {
                 instantiatedModals[instantiatedModals.Count-1].GetComponent<ModalBehaviour>().EnableAnswerButtons();
-                if (EventSystem.current.currentSelectedGameObject == null)
-                    instantiatedModals[instantiatedModals.Count-1].GetComponent<ModalBehaviour>().SelectPrimaryHighlightedButton();
+                //if (EventSystem.current.currentSelectedGameObject == null)
+                instantiatedModals[instantiatedModals.Count-1].GetComponent<ModalBehaviour>().SelectPrimaryHighlightedButton();
             }
             if (instantiatedModals.Count == 0)
             {
