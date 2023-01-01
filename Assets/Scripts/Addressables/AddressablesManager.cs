@@ -26,6 +26,7 @@ public class AddressablesManager : MonoBehaviour
             DisableBehindModalInteractables();
             instantiatedModals.Add(instantiatedModal);
             instantiatedModalsAssetsReferences.Add(modalAssetReference);
+
             if (instantiatedModals.Count == 1)
             {
                 gameManager.PauseGame();
@@ -44,8 +45,8 @@ public class AddressablesManager : MonoBehaviour
             if(instantiatedModals.Count > 0)
             {
                 instantiatedModals[instantiatedModals.Count-1].GetComponent<ModalBehaviour>().EnableAnswerButtons();
-                //if (EventSystem.current.currentSelectedGameObject == null)
-                instantiatedModals[instantiatedModals.Count-1].GetComponent<ModalBehaviour>().SelectPrimaryHighlightedButton();
+                if (!usingMouse)
+                    instantiatedModals[instantiatedModals.Count-1].GetComponent<ModalBehaviour>().SelectPrimaryHighlightedButton();
             }
             if (instantiatedModals.Count == 0)
             {
@@ -102,5 +103,10 @@ public class AddressablesManager : MonoBehaviour
     public bool IsOptionsModalCreated()
     {
         return instantiatedModals.Count > 0;
+    }
+
+    public bool IsUsingMouse()
+    {
+        return usingMouse;
     }
 }

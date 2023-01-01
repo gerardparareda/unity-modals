@@ -37,7 +37,8 @@ public class ModalBehaviour : MonoBehaviour
             instantiatedButtonsAnswer.Add(answerButton);
         }
         primaryHighlightedButton = instantiatedButtonsAnswer[0].GetComponent<Button>();
-        SelectPrimaryHighlightedButton();
+        if(!modalAddressablesManager.IsUsingMouse())
+            SelectPrimaryHighlightedButton();
     }
 
     public void CloseModal()
