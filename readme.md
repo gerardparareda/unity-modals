@@ -2,7 +2,9 @@
 
 ## Controls
 WASD/Arrows/Joystick (Gamepad) -> Move player
+
 ESC/P/Start or Select (Gamepad) -> Open pause/options menu
+
 Enter/South button (Gamepad) -> Select answer from modal
 
 Gamepad tested with Nintendo Joycons.
@@ -69,4 +71,4 @@ Drivers to use Joy-Cons as XINPUT in Windows: https://github.com/Davidobot/Bette
 
 ## Credits
 Made by Gerard Parareda Gallifa
-(27 December 2022 - 1 January 2023, During my vacations in Istanbul)
+(27 December 2022 - 1 January 2023, during my vacations in Istanbul)
