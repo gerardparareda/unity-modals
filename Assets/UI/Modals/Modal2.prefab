@@ -170,6 +170,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d0873200672f2e4a904d408ccb1bf09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  textQuestion: {fileID: 4780769949845142480}
+  textDescription: {fileID: 4780769950534386773}
   panelButtons: {fileID: 4780769950039854597}
   buttonsAnswers:
   - {fileID: 7835152838661497249, guid: 48036368f552cce40b9a41c19a30906a, type: 3}
@@ -198,7 +200,7 @@ GameObject:
   - component: {fileID: 4780769949845142483}
   - component: {fileID: 4780769949845142480}
   m_Layer: 5
-  m_Name: Title
+  m_Name: Question
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

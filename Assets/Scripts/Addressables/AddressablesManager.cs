@@ -15,6 +15,8 @@ public class AddressablesManager : MonoBehaviour
     private List<GameObject> instantiatedModals = new List<GameObject>();
     private List<AssetReferenceGameObject> instantiatedModalsAssetsReferences = new List<AssetReferenceGameObject>();
 
+    private bool usingMouse = true;
+
     public void CreateModal(AssetReferenceGameObject modalAssetReference)
     {
         modalAssetReference.InstantiateAsync().Completed += (asyncOperation) =>
@@ -38,7 +40,8 @@ public class AddressablesManager : MonoBehaviour
             if(instantiatedModals.Count > 0)
             {
                 instantiatedModals[instantiatedModals.Count-1].GetComponent<ModalBehaviour>().EnableAnswerButtons();
-                instantiatedModals[instantiatedModals.Count-1].GetComponent<ModalBehaviour>().SelectPrimaryHighlightedButton();
+                if (EventSystem.current.currentSelectedGameObject == null)
+                    instantiatedModals[instantiatedModals.Count-1].GetComponent<ModalBehaviour>().SelectPrimaryHighlightedButton();
             }
         } else
         {
@@ -52,21 +55,25 @@ public class AddressablesManager : MonoBehaviour
         InputSystem.onAnyButtonPress.Call(
             ctrl =>
             {
+                if (ctrl.device is Mouse && !usingMouse && EventSystem.current.currentSelectedGameObject)
+                {
+                    EventSystem.current.SetSelectedGameObject(null);
+                    usingMouse = true;
+                }
+
+                if ((ctrl.device is Gamepad || ctrl.device is Keyboard) && usingMouse && EventSystem.current.currentSelectedGameObject)
+                {
+                    EventSystem.current.SetSelectedGameObject(null);
+                    usingMouse = false;
+                }
+
                 if ((ctrl.device is Gamepad || ctrl.device is Keyboard) && instantiatedModals.Count > 0)
                 {
+                    //EventSystem.current.SetSelectedGameObject(null);
                     if (EventSystem.current.currentSelectedGameObject == null)
                     {
                         RefocusUI();
                     }
-                    /*else
-                    {
-                        if (
-                            EventSystem.current.currentSelectedGameObject.GetComponent<ButtonBase>().GetModalParentBehaviour().gameObject
-                            != instantiatedModals[instantiatedModals.Count - 1]
-                        )
-                            RefocusUI();
-                    }*/
-                    // Error is here. Somehow goes to back modal because is not controlled
                 }
             });
     }

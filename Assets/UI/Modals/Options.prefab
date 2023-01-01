@@ -169,6 +169,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d0873200672f2e4a904d408ccb1bf09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  textQuestion: {fileID: 4780769949845142480}
+  textDescription: {fileID: 0}
   panelButtons: {fileID: 4780769950039854597}
   buttonsAnswers:
   - {fileID: 8141142650214350232, guid: d5fefa9d844d59045bdc62f6f3c3e72e, type: 3}

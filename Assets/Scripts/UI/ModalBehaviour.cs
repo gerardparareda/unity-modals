@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.AssetImporters;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +12,8 @@ public class ModalBehaviour : MonoBehaviour
     private AddressablesManager modalAddressablesManager;
 
     private Button primaryHighlightedButton;
+    [SerializeField] private Text textQuestion;
+    [SerializeField] private Text textDescription;
     [SerializeField] private GameObject panelButtons;
     public List<GameObject> buttonsAnswers = new List<GameObject>();
     private List<GameObject> instantiatedButtonsAnswer = new List<GameObject>();
@@ -33,7 +36,7 @@ public class ModalBehaviour : MonoBehaviour
             answerButton.transform.SetParent(panelButtons.transform, false);
             instantiatedButtonsAnswer.Add(answerButton);
         }
-        primaryHighlightedButton = instantiatedButtonsAnswer[instantiatedButtonsAnswer.Count-1].GetComponent<Button>();
+        primaryHighlightedButton = instantiatedButtonsAnswer[0].GetComponent<Button>();
         SelectPrimaryHighlightedButton();
     }
 
@@ -57,7 +60,7 @@ public class ModalBehaviour : MonoBehaviour
 
     public void SelectPrimaryHighlightedButton()
     {
-        GameObject primaryHighlightedButton = instantiatedButtonsAnswer[instantiatedButtonsAnswer.Count - 1];
+        GameObject primaryHighlightedButton = instantiatedButtonsAnswer[0];
         if (primaryHighlightedButton)
         {
             primaryHighlightedButton.GetComponent<Button>().Select();
@@ -75,5 +78,14 @@ public class ModalBehaviour : MonoBehaviour
     public void EnableAnswerButtons()
     {
         GetComponent<CanvasGroup>().interactable = true;
+    }
+
+    public Text GetQuestion()
+    {
+        return textQuestion;
+    }
+    public Text GetDescription()
+    {
+        return textDescription;
     }
 }
