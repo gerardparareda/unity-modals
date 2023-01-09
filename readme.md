@@ -1,4 +1,4 @@
-# Modals test for Petoons 
+# Modals test
 
 ## Usage
 ### Binary
